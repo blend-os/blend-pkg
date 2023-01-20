@@ -14,9 +14,8 @@ depends=('python3' 'distrobox' 'podman')
 package() {
 	cd blend
 
-	mkdir -p "${pkgdir}"/{usr/{bin,share/bash-completion/completions},blend,etc/profile.d}
+	mkdir -p "${pkgdir}"/{usr/{bin,share/bash-completion/completions},blend}
 	cp blend "${pkgdir}/usr/bin"
-	cp blend-profiled.sh "${pkgdir}/etc/profile.d"
 	cp completions/blend "${pkgdir}/usr/share/bash-completion/completions"
 	cp -r pkgmanagers "${pkgdir}/blend"
 }
