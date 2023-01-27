@@ -2,7 +2,7 @@
 
 pkgname=blend
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A package manager for blendOS'
 url='https://github.com/blend-os/blend'
 source=("git+https://github.com/blend-os/blend.git")
