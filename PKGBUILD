@@ -25,7 +25,7 @@ build() {
 }
 
 package_blend() {
-    depends=('python3' 'podman' 'python-pexpect' 'bash')
+    depends=('python3' 'podman' 'python-pexpect' 'blend-settings' 'bash')
     cd "${srcdir}"/blend
     mkdir -p "${pkgdir}"/usr/bin "${pkgdir}"/usr/lib/systemd/system "${pkgdir}"/usr/lib/systemd/user "${pkgdir}"/usr/lib/initcpio/install "${pkgdir}"/usr/lib/initcpio/hooks
     cp blend init-blend host-blend blend-system blend-files "${pkgdir}"/usr/bin
