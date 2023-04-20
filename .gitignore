@@ -2,6 +2,7 @@
 
 !.gitignore
 !PKGBUILD
+!blend.sh
 !blend-settings
 !blend-settings.desktop
 !.SRCINFO
