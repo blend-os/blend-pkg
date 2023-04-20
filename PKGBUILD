@@ -2,8 +2,8 @@
 
 pkgbase=blend-git
 pkgname=('blend-git' 'blend-settings-git')
-pkgver=r30.f7cc861
-pkgrel=2
+pkgver=r35.1a18d5f
+pkgrel=1
 _electronversion=22
 pkgdesc="A package manager for blendOS"
 arch=('x86_64' 'i686')
@@ -12,10 +12,11 @@ license=('GPL3')
 makedepends=("electron${_electronversion}" 'git' 'npm')
 source=('git+https://github.com/blend-os/blend.git'
         'blend-settings.desktop'
-        'blend-settings')
+        'blend-settings'
+        'blend.sh')
 sha256sums=('SKIP'
             'a605d24d2fa7384b45a94105143db216db1ffc0bdfc7f6eec758ef2026e61e54'
-            '73cb7c39190d36f233b8dfbc3e3e6737d56e61e90881ad95f09e5ae1f9b405a8')
+            '73cb7c39190d36f233b8dfbc3e3e6737d56e61e90881ad95f09e5ae1f9b405a8' 'SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgbase%-git}"
@@ -52,6 +53,8 @@ package_blend-git() {
         "${pkgname%-git}-system" \
         "${pkgname%-git}-files" \
         -t "${pkgdir}"/usr/bin/
+    install -Dm644 ../"${pkgname%-git}.sh" -t \
+        "${pkgdir}"/etc/profile.d/
     install -Dm644 "${pkgname%-git}-system.service" -t \
         "${pkgdir}"/usr/lib/systemd/system/
     install -Dm644 "${pkgname%-git}-files.service" -t \
@@ -93,5 +96,6 @@ package_blend-settings-git() {
 
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t \
         "${pkgdir}"/usr/share/applications/
+
     install -Dm755 "${srcdir}/${pkgname%-git}" -t "${pkgdir}"/usr/bin/
 }
