@@ -2,8 +2,8 @@
 
 pkgbase=blend-git
 pkgname=('blend-git' 'blend-settings-git')
-pkgver=r27.0024d66
-pkgrel=1
+pkgver=r30.f7cc861
+pkgrel=2
 _electronversion=22
 pkgdesc="A package manager for blendOS"
 arch=('x86_64' 'i686')
@@ -40,7 +40,7 @@ build() {
 }
 
 package_blend-git() {
-    depends=('bash' 'blend-settings' 'podman' 'python' 'python-pexpect')
+    depends=('bash' 'blend-settings-git' 'podman' 'python' 'python-pexpect')
     provides=("${pkgname%-git}")
     conflicts=("${pkgname%-git}")
 
@@ -65,6 +65,8 @@ package_blend-git() {
 package_blend-settings-git() {
     pkgdesc="blendOS Settings"
     depends=("electron${_electronversion}")
+    provides=(blend-settings)
+    conflicts=(blend-settings)
 
     cd "${srcdir}/${pkgbase%-git}/${pkgbase%-git}-settings"
 
