@@ -2,14 +2,14 @@
 
 pkgbase=blend-git
 pkgname=('blend-git' 'blend-settings-git')
-pkgver=r35.1a18d5f
+pkgver=r42.158cc38
 pkgrel=1
 _electronversion=22
 pkgdesc="A package manager for blendOS"
 arch=('x86_64' 'i686')
 url="https://github.com/blend-os/blend"
 license=('GPL3')
-makedepends=("electron${_electronversion}" 'git' 'npm')
+makedepends=("electron${_electronversion}" 'git' 'npm' 'base-devel')
 source=('git+https://github.com/blend-os/blend.git'
         'blend-settings.desktop'
         'blend-settings'
@@ -38,6 +38,7 @@ build() {
     npm run icons
     npm run pack -- -c.electronDist=${electronDist} \
         -c.electronVersion=${electronVer} --publish never
+    cd ../overlayfs-tools; make
 }
 
 package_blend-git() {
@@ -50,13 +51,12 @@ package_blend-git() {
         "${pkgname%-git}" \
         "init-${pkgname%-git}" \
         "host-${pkgname%-git}" \
-        "${pkgname%-git}-system" \
         "${pkgname%-git}-files" \
         -t "${pkgdir}"/usr/bin/
+    install -Dm755 "overlayfs-tools/overlayfs-tools" -t \
+        "${pkgdir}/usr/bin/"
     install -Dm644 ../"${pkgname%-git}.sh" -t \
         "${pkgdir}"/etc/profile.d/
-    install -Dm644 "${pkgname%-git}-system.service" -t \
-        "${pkgdir}"/usr/lib/systemd/system/
     install -Dm644 "${pkgname%-git}-files.service" -t \
         "${pkgdir}"/usr/lib/systemd/user/
     install -Dm644 "${pkgname%-git}.hook" \
