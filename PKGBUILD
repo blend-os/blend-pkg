@@ -2,7 +2,7 @@
 
 pkgbase=blend-git
 pkgname=('blend-git' 'blend-settings-git')
-pkgver=r42.158cc38
+pkgver=r50.2e0016f
 pkgrel=1
 _electronversion=22
 pkgdesc="A package manager for blendOS"
