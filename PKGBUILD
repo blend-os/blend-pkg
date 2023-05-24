@@ -10,7 +10,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/blend-os/blend"
 license=('GPL3')
 makedepends=("electron${_electronversion}" 'git' 'npm' 'base-devel')
-source=('git+https://github.com/blend-os/blend.git'
+source=('git+file://[BASE_ASSEMBLE_PATH]/projects/blend'
         'blend-settings.desktop'
         'blend-settings'
         'blend.sh')
