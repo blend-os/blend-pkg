@@ -4,12 +4,11 @@ pkgbase=blend-git
 pkgname=('blend-git' 'blend-settings-git')
 pkgver=r50.2e0016f
 pkgrel=1
-_electronversion=22
 pkgdesc="A package manager for blendOS"
 arch=('x86_64' 'i686')
 url="https://github.com/blend-os/blend"
 license=('GPL3')
-makedepends=("electron${_electronversion}" 'git' 'npm' 'base-devel')
+makedepends=("electron" 'git' 'npm' 'base-devel')
 source=('git+file://[BASE_ASSEMBLE_PATH]/projects/blend'
         'blend-settings.desktop'
         'blend-settings'
@@ -33,8 +32,8 @@ build() {
     cd "${srcdir}/${pkgbase%-git}/${pkgbase%-git}-settings"
     npm config set cache "${srcdir}/npm-cache"
     export NODE_ENV=production
-    electronDist="/usr/lib/electron${_electronversion}"
-    electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
+    electronDist="/usr/lib/electron"
+    electronVer="$(sed s/^v// /usr/lib/electron/version)"
     npm run icons
     npm run pack -- -c.electronDist=${electronDist} \
         -c.electronVersion=${electronVer} --publish never
