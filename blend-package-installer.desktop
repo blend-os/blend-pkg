@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Package Installer
+Exec=blend-settings package %F
+Terminal=false
+NoDisplay=true
+Type=Application
+Icon=blend-settings
+StartupWMClass=blend-settings
+Comment=Package installer for blendOS.
+Categories=System;
