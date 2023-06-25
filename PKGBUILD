@@ -11,10 +11,12 @@ license=('GPL3')
 makedepends=("electron" 'git' 'npm' 'base-devel')
 source=('git+file://[BASE_ASSEMBLE_PATH]/projects/blend'
         'blend-settings.desktop'
+        'blend-package-installer.desktop'
         'blend-settings'
         'blend.sh')
 sha256sums=('SKIP'
             'a605d24d2fa7384b45a94105143db216db1ffc0bdfc7f6eec758ef2026e61e54'
+            '23decd858ab49e860999bba783da78f43adc7b678065057cadfc2eeaefb2e870'
             '73cb7c39190d36f233b8dfbc3e3e6737d56e61e90881ad95f09e5ae1f9b405a8' 'SKIP')
 
 pkgver() {
@@ -94,6 +96,9 @@ package_blend-settings-git() {
     done
 
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t \
+        "${pkgdir}"/usr/share/applications/
+
+    install -Dm644 "${srcdir}/blend-package-installer.desktop" -t \
         "${pkgdir}"/usr/share/applications/
 
     install -Dm755 "${srcdir}/${pkgname%-git}" -t "${pkgdir}"/usr/bin/
